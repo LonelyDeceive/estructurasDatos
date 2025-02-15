@@ -1,31 +1,35 @@
-numeros = list()
-numero = int(input("Numero>"))
-def agregar (numero:int):
-
+words = dict()
+key = input("Clave: ")
+val = input("Valor: ")
+def agregar (key:str,val:str):
+    
     def menu():
         print("Agregar/1")
         print("Eliminar/2")
         print("Salir/3")
 
-    def add(numero:int)-> None:
-        numeros.append(numero)
-        print(numeros)
+    def add(key:str,val:str)-> None:
+        words.update({key:val})
+        print(words)
 
     def delete()-> None:
-        numeros.pop()
-        print(numeros)
+        words.popitem()
+        print(words)
 
+    words.update({key:val})
+    print(words)
     menu()
-    numeros.append(numero)
     c = int(input(">"))
     while c != 3:
         if c == 1:
-            numero = int(input("Numero>"))
-            add(numero)
+            key = input("Clave: ")
+            val = input("Valor: ")
+            add(key,val)
             d = input("Continuar?:")
             if d == "y":
-                numero = int(input("Numero>"))
-                add(numero)
+                key = input("Clave: ")
+                val = input("Valor: ")
+                add(key,val)
                 d = input("Continuar?:")
             if d == "n": 
                 print("---------------")
@@ -37,6 +41,6 @@ def agregar (numero:int):
             print("---------------")
             menu()
             print("---------------")
-            c = int(input("Valor>"))           
-    return numeros
-print(agregar(numero))
+            c = int(input("Valor>"))       
+    return words
+print(agregar(key,val))
