@@ -213,29 +213,38 @@ class Estudiante:
     nombre:str
     edad:int
     curso:str
+    total = 0
 
-    def average(grades,gradescan):
-        total = 0
-        for i in range(0,gradescan+1):
-            t = grades[i]
-            total = total + t
-        print(total)
+    def resinfE(nombre,edad,curso,aver):
+        print("El estudiante:",nombre)
+        print("Edad:",edad)
+        if aver >= 3:
+            print("ha APROBADO el curso de",curso)
+            print("con un promedio de","{:.2f}".format(aver))
+        else:
+            print("ha REPROBADO el curso de",curso)
+            print("con un promedio de","{:.2f}".format(aver))
         
-    def addgrades():
+    def addgrades(nombre,edad,curso):
         grades = []
         gradescan = int(input("Ingrese la cantidad de calificaciones: "))
         for i in range(1,gradescan+1):
-            t = int(input("Ingrese calificacion: "))
+            t = float(input("Ingrese calificacion: "))
             grades.append(t)
             print(grades)
-        Estudiante.average(grades,gradescan)
+        total = 0
+        for i in range(0,gradescan):
+            t = grades[i]
+            total = total + t
+        aver = total/gradescan
+        Estudiante.resinfE(nombre,edad,curso,aver)
 
     def inflE():
         print("Su informacion Estudiante")
         nombre = input("Ingrese el nombre del estudiante: ")
-        edad = int(input("Ingrese la edad "))
-        curso = input("Ingrese el curso ")
-        Estudiante.addgrades()
+        edad = int(input("Ingrese la edad: "))
+        curso = input("Ingrese el curso: ")
+        Estudiante.addgrades(nombre,edad,curso)
 
 
 
@@ -253,5 +262,5 @@ class Estudiante:
 
 #Producto.infl()
 
-#Estudiante.inflE()
+Estudiante.inflE()
 
