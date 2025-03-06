@@ -248,19 +248,19 @@ class Estudiante:
 
 
 
-#persona = Persona()
-#persona.inf()
-#cuenta = CuentaBancaria(persona)
-#cuenta.cb("","")
+persona = Persona()
+persona.inf()
+cuenta = CuentaBancaria(persona)
+cuenta.cb("","")
 
-#Rectangulo.basHi("","")
-#Circulo.pirad("")
+Rectangulo.basHi("","")
+Circulo.pirad("")
 
-#Libro.infl()
+Libro.infl()
 
-#Cancion.inflC()
+Cancion.inflC()
 
-#Producto.infl()
+Producto.infl()
 
 Estudiante.inflE()
 
