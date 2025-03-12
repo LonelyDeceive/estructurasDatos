@@ -8,6 +8,8 @@ class NodeTy:
         self.data = data
         self.next = None
 
+
+
 class ListaEnlazada:
     def __init__(self):
         self.head = None
@@ -121,6 +123,5 @@ class Animal:
                     a = int(input("Seleccione una opcion > "))
                 if con == 2:
                     lista.printR(actualNode="",c=c,n="")
-
 Animal.menu()
 
