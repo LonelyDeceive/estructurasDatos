@@ -5,6 +5,11 @@ class NodeTa:
 
 
 class Task:   
+    newdato = ""
+    pridata = ""
+    newdatocom = ""
+    pridatacom = ""
+    descdatacom = ""
     def __init__(self):
         self.head = None
 
@@ -28,8 +33,6 @@ class Task:
             actualNode.next.next = node
             actualNode.next.next.next = node3
 
-    newdato = ""
-    pridata = ""
     def delete(self, dato):
         actualNode = self.head
         if actualNode.data == dato:
@@ -129,6 +132,61 @@ class Task:
                 print("No hay tareas prioridad 3\n")
             else:
                 print("")
+
+    def search(self, dato):
+        z = 0
+        actualNode = self.head
+        while actualNode.next is not None:
+            if actualNode.next.data == dato:
+                print("Tarea: ",actualNode.next.data)
+                print("Prioridad:",actualNode.data)
+                print("Tiempo:",actualNode.next.next.data)
+                z = z + 1
+            actualNode = actualNode.next
+        if z == 0:
+            print("No se ha encontrado la tarea",dato)
+    
+    def complete(self, dato):
+        actualNode = self.head
+        if actualNode.data == dato:
+            self.head = actualNode.next
+            return
+        while actualNode.next is not None:
+            if actualNode.next.data == dato:
+                print("Se ha completado la tarea",dato,end=" ")
+                print("de prioridad",actualNode.data,end=" ")
+                self.pridatacom = actualNode.data
+                actualNode.next = actualNode.next.next
+                print("de tiempo",actualNode.next.data)
+                print("Felicitaciones")
+                self.newdatocom = actualNode.next.data
+                return
+            actualNode = actualNode.next
+
+    def complete2(self, dato2):
+        dato2 = self.newdatocom
+        actualNode = self.head
+        if actualNode.data == dato2:
+            self.head = actualNode.next
+            return
+        while actualNode.next is not None:
+            if actualNode.next.data == dato2:
+                actualNode.next = actualNode.next.next
+                return
+            actualNode = actualNode.next
+
+    def complete3(self, dato3):
+        dato3 = self.pridatacom
+        actualNode = self.head
+        if actualNode.data == dato3:
+            self.head = actualNode.next
+            return
+        while actualNode.next is not None:
+            if actualNode.next.data == dato3:
+                actualNode.next = actualNode.next.next
+                return
+            actualNode = actualNode.next
+
             
 class Menu:
 
@@ -162,6 +220,19 @@ class Menu:
                 tarea.print2()
                 tarea.print3()
                 a = int(input("Seleccione una opcion> "))
+            if a == 4:
+                print("Buscar Tarea")
+                c = input("Escriba descripcion tarea a buscar: ")
+                tarea.search(c)
+                a = int(input("Seleccione una opcion> "))
+            if a == 5:
+                print("Completar una tarea")
+                d = input("Ingrese la descripcion: ")
+                tarea.complete(d)
+                tarea.complete2("")
+                tarea.complete3("")
+                a = int(input("Seleccione una opcion> "))
+
                 
 
 Menu.taskManager()
