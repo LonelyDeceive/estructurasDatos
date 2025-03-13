@@ -9,7 +9,6 @@ class NodeTy:
         self.next = None
 
 
-
 class ListaEnlazada:
     def __init__(self):
         self.head = None
