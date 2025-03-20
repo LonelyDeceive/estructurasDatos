@@ -33,7 +33,7 @@ class Stack:
     
     def pop(self):
         if self.head is None:
-            print("La pila ya esta vacia")
+            print(": La pila ya esta vacia")
         else:
             temp = self.head.getData()
             self.head = self.head.getNext()
@@ -47,23 +47,23 @@ class Stack:
             print(self.head.getData())
 
 pila = Stack()
-pila.peek()
-pila.push("1ro") 
-pila.peek()
-pila.push("2do")
-pila.peek()
-pila.push("3ro")
-pila.peek()
-pila.push("4to")
-pila.peek()
-pila.pop()
-pila.peek()
-pila.pop()
-pila.peek()
-pila.pop()
-pila.peek()
-pila.pop()
-pila.peek()
-pila.pop()
-pila.push("5to")
-pila.peek()
+print("1) Push")
+print("2) Pop")
+print("3) Peek")
+print("4) Salir")
+a = int(input("> "))
+while a != 4:
+    if a == 1:
+        print("Uso de Push")
+        b = input("Ingrese el dato: ")
+        pila.push(b)
+        a = int(input("> "))
+    if a == 2:
+        print("Uso de Pop")
+        pila.pop()
+        a = int(input("> "))
+    if a == 3: 
+        print("Uso de peek")
+        print(":",end=" ")
+        pila.peek()
+        a = int(input("> "))
