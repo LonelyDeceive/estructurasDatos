@@ -16,8 +16,6 @@ class ListaEnlazada:
     def isEmpty(self):
         return self.head is None
     
-    def isEmptyt(self):
-        return self.head is None
     addTy = True
     def addNode(self, dato):
         node = Node(dato)
@@ -30,9 +28,9 @@ class ListaEnlazada:
                     print("Ya has ingresado este dato |",actualNode.data,"| para Nombre")
                     self.addTy = False
                     return None
-            while actualNode.next is not None:
-                actualNode = actualNode.next
-                if actualNode.data == node.data:
+            while actualNode.next is not None: 
+                actualNode = actualNode.next 
+                if actualNode.data == node.data: 
                     print("Ya has ingresado este dato |",actualNode.data,"| para Nombre")
                     self.addTy = False
                     return None
