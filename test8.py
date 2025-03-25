@@ -12,6 +12,3 @@ def datos3(data):
     print("Total", data)
 
 num = datos(1,2)
-
-
-
