@@ -3,17 +3,17 @@ from model.node import Node
 
 class TicketController:
     def __init__(self) -> None:
-        self.head = None
+        TicketController.head = None
     
     def is_empty(self) -> bool:
-        return self.head == None
+        return TicketController.head == None
     
     def enqueue(self, ticket: Ticket) -> None:
-        node = Node(ticket, ticket.priority)
-        if self.is_empty():
-            self.head = node
+        node = Node(ticket, ticket.priority_attention)
+        if TicketController.is_empty(self):
+            TicketController.head = node
         else:
-            current = self.head
+            current = TicketController.head
             if current.priority < node.priority:
                 node.next = current
                 self.head = node
@@ -38,8 +38,8 @@ class TicketController:
             return self.head.data
     
     def print_queue(self) -> None:
-        current = self.head
+        current = TicketController.head
         while current != None:
-            print(f"Turno: {current.data.turno}, Prioridad: {current.priority}")
+            print(f"Turno: {current.data}, Prioridad: {current.priority}")
             current = current.next
         print("Fin de la cola")

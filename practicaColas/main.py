@@ -16,7 +16,6 @@ ticketTypes = {
 # Endpoint para crear un turno
 @app.post("/ticketCreate")
 def crear_turno(turno: Ticket):
-    # Aquí podrías agregar la lógica para guardar el turno en una base de datos
     add_queue(turno, ticketTypes)
     return {"mensaje": "Turno creado correctamente", "datos_turno": turno}
 
@@ -33,7 +32,7 @@ def listar_turnos_cola(tipo: str):
 # Otros endpoints existentes
 @app.get("/")
 def read_root():
-    return {"Hello": "World1"}
+    return {"Hello": "World11"}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
