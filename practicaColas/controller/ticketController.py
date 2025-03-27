@@ -16,7 +16,7 @@ class TicketController:
             current = TicketController.head
             if current.priority < node.priority:
                 node.next = current
-                self.head = node
+                TicketController.head = node
             else:
                 while current.next != None and current.next.priority > node.priority:
                     current = current.next
@@ -32,10 +32,10 @@ class TicketController:
             return ticket
         
     def peek(self) -> Ticket:
-        if self.is_empty():
+        if TicketController.is_empty(self):
             return None
         else:
-            return self.head.data
+            return TicketController.head.data
     
     def print_queue(self) -> None:
         current = TicketController.head
