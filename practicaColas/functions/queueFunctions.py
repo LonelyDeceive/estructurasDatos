@@ -26,13 +26,13 @@ def add_queue(ticket: Ticket, ticketTypes: dict) -> None:
         intpriority = 1
     elif uspriority == "no":
         priority = False
-        intpriority = 1
+        intpriority = 2
     elif uspriority == "" and age > 60:
         priority = True
         intpriority = 1
     else:
         priority = False
-        intpriority = 1
+        intpriority = 2
     ticket = Ticket(name=name,type=type,identity=identity,case_description=case,age=age,priority_attention=priority,priority=intpriority)
     TicketController.enqueue("",ticket)
     print("Ticket añadido a la cola")

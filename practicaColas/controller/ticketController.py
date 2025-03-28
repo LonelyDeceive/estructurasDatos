@@ -31,19 +31,25 @@ class TicketController:
             self.head = self.head.next
             return ticket
         
-    def peek(self) -> Ticket:
+    def peek(self, tipo) -> Ticket:
         nextTicket = TicketController.head
         if TicketController.is_empty(self):
             print("No hay mas turnos")
             return "No hay mas turnos"
         else:
-            print(nextTicket.data)
-            msg = {
-                "Nombre": nextTicket.data.name,
-                "Servicio": nextTicket.data.type,
-                "Prioridad": nextTicket.data.priority
-                }
-            return msg
+            while nextTicket != None:
+                if nextTicket.data.type == tipo:
+                    print(nextTicket.data)
+                    msg = {
+                        "Nombre": nextTicket.data.name,
+                        "Servicio": nextTicket.data.type,
+                        "Prioridad": nextTicket.data.priority
+                    }
+                    return msg
+                nextTicket = nextTicket.next               
+            else:
+                print("No hay turnos de este tipo", tipo)
+                return("No hay mas turnos de tipo", tipo)
     
     def print_queue(self, type) -> Ticket:
         list_queue = []

@@ -22,7 +22,7 @@ def crear_turno(turno: Ticket):
 # Endpoint para obtener el siguiente turno
 @app.get("/ticketNext")
 def obtener_siguiente_turno(tipo: str):
-    nextTicket = TicketController.peek("")
+    nextTicket = TicketController.peek("", tipo)
     return {"El siguiente turno es": nextTicket}
 
 # Endpoint para listar los turnos en cola por el tipo de turno
