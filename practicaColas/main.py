@@ -22,13 +22,14 @@ def crear_turno(turno: Ticket):
 # Endpoint para obtener el siguiente turno
 @app.get("/ticketNext")
 def obtener_siguiente_turno(tipo: str):
-    TicketController.print_queue("")
-    return {"mensaje": "El siguiente turno es", "datos_turno": tipo}
+    nextTicket = TicketController.peek("")
+    return {"El siguiente turno es": nextTicket}
 
 # Endpoint para listar los turnos en cola por el tipo de turno
 @app.get("/ticketList")
 def listar_turnos_cola(type: str):
-    return {"mensaje": "Lista de turnos en cola", "datos_turnos": ""}
+    queue_list = TicketController.print_queue("", type)
+    return {"Lista de turnos en cola": type, "datos_turnos": queue_list}
 
 # Otros endpoints existentes
 @app.get("/")

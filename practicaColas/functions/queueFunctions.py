@@ -8,25 +8,31 @@ def add_queue(ticket: Ticket, ticketTypes: dict) -> None:
     """
     print("Añadir ticket a la cola")
     name = input("Nombre: ")
-    print("(dudas, asesor, caja, otros)")
+    print("dudas, asesor, caja, otros)")
     type = input("Cual servicio necesita?: ")
+    if type == "dudas":
+        case = "para consultas generales"
+    elif type == "asesor":
+        case = "para asesorías personalizadas"
+    elif type == "caja":
+        case = "para operaciones de caja"
+    elif type == "otros":
+        case = "para cualquier otra gestión"
     identity = input("Ingrese su numero de documento: ")
-    case = "Prueba"
     age = int(input("Ingrese su edad: "))
     uspriority = input("Necesita atencion prioritaria?: ")
     if uspriority == "si":
         priority = True
+        intpriority = 1
     elif uspriority == "no":
         priority = False
+        intpriority = 1
     elif uspriority == "" and age > 60:
         priority = True
-    else:
-        priority = False
-    if priority == True:
         intpriority = 1
     else:
-        intpriority = 2
+        priority = False
+        intpriority = 1
     ticket = Ticket(name=name,type=type,identity=identity,case_description=case,age=age,priority_attention=priority,priority=intpriority)
     TicketController.enqueue("",ticket)
-    TicketController.print_queue("")
     print("Ticket añadido a la cola")

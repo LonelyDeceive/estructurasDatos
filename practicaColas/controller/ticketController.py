@@ -32,14 +32,51 @@ class TicketController:
             return ticket
         
     def peek(self) -> Ticket:
+        nextTicket = TicketController.head
         if TicketController.is_empty(self):
-            return None
+            print("No hay mas turnos")
+            return "No hay mas turnos"
         else:
-            return TicketController.head.data
+            print(nextTicket.data)
+            msg = {
+                "Nombre": nextTicket.data.name,
+                "Servicio": nextTicket.data.type,
+                "Prioridad": nextTicket.data.priority
+                }
+            return msg
     
-    def print_queue(self) -> None:
+    def print_queue(self, type) -> Ticket:
+        list_queue = []
         current = TicketController.head
-        while current != None:
-            print(f"Turno: {current.data}, Prioridad: {current.priority}")
-            current = current.next
-        print("Fin de la cola")
+        if current == None:
+            print("Turnos Vacios")
+            return "Turnos Vacios"
+        else:
+            if type == "todos" or type == " ":
+                while current != None:
+                    print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                    list_queue.append(current.data)
+                    current = current.next
+                print("Fin de la cola")
+                return list_queue               
+            elif type != "todos":
+                while current != None:
+                    if current.data.type == "dudas" and type == "dudas":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "asesor" and type == "asesor":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "caja" and type == "caja":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "otros" and type == "otros":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    else:
+                        print("No se encuentran turnos",type)
+                        return "No se encuentran turnos"
+                    current = current.next
+                print("Fin de la cola")
+                return list_queue
+        
