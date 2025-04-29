@@ -3,20 +3,20 @@ from model.node import Node
 
 class TicketController:
     def __init__(self) -> None:
-        self.head = None
+        TicketController.head = None
     
     def is_empty(self) -> bool:
-        return self.head == None
+        return TicketController.head == None
     
     def enqueue(self, ticket: Ticket) -> None:
-        node = Node(ticket, ticket.priority)
-        if self.is_empty():
-            self.head = node
+        node = Node(ticket, ticket.priority_attention)
+        if TicketController.is_empty(self):
+            TicketController.head = node
         else:
-            current = self.head
+            current = TicketController.head
             if current.priority < node.priority:
                 node.next = current
-                self.head = node
+                TicketController.head = node
             else:
                 while current.next != None and current.next.priority > node.priority:
                     current = current.next
@@ -31,15 +31,58 @@ class TicketController:
             self.head = self.head.next
             return ticket
         
-    def peek(self) -> Ticket:
-        if self.is_empty():
-            return None
+    def peek(self, tipo) -> Ticket:
+        nextTicket = TicketController.head
+        if TicketController.is_empty(self):
+            print("No hay mas turnos")
+            return "No hay mas turnos"
         else:
-            return self.head.data
+            while nextTicket != None:
+                if nextTicket.data.type == tipo:
+                    print(nextTicket.data)
+                    msg = {
+                        "Nombre": nextTicket.data.name,
+                        "Servicio": nextTicket.data.type,
+                        "Prioridad": nextTicket.data.priority
+                    }
+                    return msg
+                nextTicket = nextTicket.next               
+            else:
+                print("No hay turnos de este tipo", tipo)
+                return("No hay mas turnos de tipo", tipo)
     
-    def print_queue(self) -> None:
-        current = self.head
-        while current != None:
-            print(f"Turno: {current.data.turno}, Prioridad: {current.priority}")
-            current = current.next
-        print("Fin de la cola")
+    def print_queue(self, type) -> Ticket:
+        list_queue = []
+        current = TicketController.head
+        if current == None:
+            print("Turnos Vacios")
+            return "Turnos Vacios"
+        else:
+            if type == "todos" or type == " ":
+                while current != None:
+                    print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                    list_queue.append(current.data)
+                    current = current.next
+                print("Fin de la cola")
+                return list_queue               
+            elif type != "todos":
+                while current != None:
+                    if current.data.type == "dudas" and type == "dudas":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "asesor" and type == "asesor":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "caja" and type == "caja":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    elif current.data.type == "otros" and type == "otros":
+                        print(f"Turno: {current.data}, Prioridad: {current.priority}")
+                        list_queue.append(current.data)
+                    else:
+                        print("No se encuentran turnos",type)
+                        return "No se encuentran turnos"
+                    current = current.next
+                print("Fin de la cola")
+                return list_queue
+        
