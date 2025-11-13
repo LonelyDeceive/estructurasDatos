@@ -61,5 +61,3 @@ class RecursosDisponibles:
         print("Memoria RAM y memoria virtual insuficiente")
         return False
     
-        
-        
