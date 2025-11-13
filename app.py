@@ -4,7 +4,7 @@ import os
 
 app = FastAPI(title="SimpleHelloAPI")
 
-@app.get("/hello")
+@app.get("/hello?name=EstudianteDocker")
 def read_root(name: str = "Jhon Mario Carvajal"):
     """
     Endpoint que devuelve un saludo personalizado.
