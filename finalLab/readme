@@ -1,0 +1,20 @@
+# Puedes ejecutar localmente usando
+ # instalar dependencias
+python -m pip install fastapi uvicorn
+
+# ejecutar localmente
+uvicorn app.main:app --reload --port 8000
+# en una cmd
+
+# Para la dockerizacion se usa
+docker build -t juego-api:latest .
+
+# Para correr la imagen
+docker run -d -p 8080:80 --name play juego-api:latest
+
+#Para el despliegue en Azure 
+docker tag juego-api:latest myappjhonregistry.azurecr.io/juego-api:latest3
+docker push myappjhonregistry.azurecr.io/juego-api:latest3
+
+#Al final se crea una URL publica
+https://guessgame-bqc8hrfrbvfaa2hv.chilecentral-01.azurewebsites.net/ins
